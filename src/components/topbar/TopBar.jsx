@@ -16,10 +16,10 @@ export default function TopBar() {
                         <Link className='link' to="/">HOME</Link>
                     </li>
                     <li className="topListItem">
-                        <Link className='link' to="/about">ABOUT</Link>
+                        <Link className='link' to="/">ABOUT</Link>
                     </li>
                     <li className="topListItem">
-                        <Link className='link' to="/contact">CONTACT</Link>
+                        <Link className='link' to="/">CONTACT</Link>
                     </li>
                     <li className="topListItem">
                         <Link className='link' to="/write">WRITE</Link>

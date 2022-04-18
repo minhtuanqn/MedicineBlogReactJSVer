@@ -42,10 +42,11 @@
     padding: 10px;
 }
 
-.loginButton {
+.registerLoginButton {
     position: absolute;
     top: 60px;
     right: 20px;
+    padding: 10px;
     cursor: pointer;
     border: none;
     background-color: teal;
