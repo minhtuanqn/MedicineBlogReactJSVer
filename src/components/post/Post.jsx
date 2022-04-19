@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 import "./post.css";
 
-export default function Post() {
+export default function Post({post}) {
     return (
         <div className="post">
             <img
@@ -10,26 +11,22 @@ export default function Post() {
             />
             <div className="postInfor">
                 <div className="postCats">
-                    <span className="postCat">Music</span>
-                    <span className="postCat">Life</span>
+                    {
+                        post.tagIds.split(",").map((tag) => (
+                            <span key={tag} className="postCat">{tag}</span>
+                        ))
+                    }
                 </div>
-                <span className="postTitle">
-                    This is post title
-                </span>
+                <Link className="link" to={`/post/${post.id}`}>
+                    <span className="postTitle">
+                        {post.title}
+                    </span>
+                </Link>
                 <hr/>
-                <span className="postDate">1 hour ago</span>
+                <span className="postDate">{post.createDate}</span>
             </div>
             <p className="postDes">
-                This is post description demo
-                This is post description demo
-                This is post description demo
-                This is post description demo
-                This is post description demo
-                This is post description demo
-                This is post description demo
-                This is post description demo
-                This is post description demo
-                
+                {post.content}
             </p>
         </div>
     )

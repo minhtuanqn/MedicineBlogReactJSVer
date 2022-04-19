@@ -1,7 +1,19 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import './sidebar.css';
 
 export default function SideBar() {
+
+    const [tags, setTags] = useState([]);
+
+    useEffect(() => {
+        const getTags = async () => {
+            const res = axios.get("https://localhost:44303/api/tags/");
+            setTags((await res).data.data);
+        }
+        getTags();
+    }, []);
+
     return (
         <div className="sidebar">
             
@@ -19,12 +31,9 @@ export default function SideBar() {
             <div className="sidebarItem">
                 <span className="sidebarTitle">CATEGORIES</span>
                 <ul className="sidebarList">
-                    <li className="sidebarListItem">Life</li>
-                    <li className="sidebarListItem">Music</li>
-                    <li className="sidebarListItem">Style</li>
-                    <li className="sidebarListItem">Sport</li>
-                    <li className="sidebarListItem">Tech</li>
-                    <li className="sidebarListItem">Cinema</li>
+                    {tags.map((t) => (
+                        <li key={t.name} className="sidebarListItem">{t.name}</li>
+                    ))}
                 </ul>
             </div>
             <div className="sidebarItem">

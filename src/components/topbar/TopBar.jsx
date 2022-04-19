@@ -1,8 +1,21 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './topbar.css';
+import axios from 'axios';
+import { useEffect } from 'react';
 
 export default function TopBar() {
-    const user = false;
+    const user = true;
+    const [topics, setTopics] = useState([]);
+
+    useEffect(() => {
+        const fetchTopicss = async () => {
+            const res = axios.get("https://localhost:44303/api/topics/")
+            setTopics((await res).data.data)
+        }
+        fetchTopicss()
+    }, []);
+
     return (
         <div className="top">
             <div className="topLeft">
@@ -13,16 +26,22 @@ export default function TopBar() {
             <div className="topCenter">
                 <ul className="topList">
                     <li className="topListItem">
-                        <Link className='link' to="/">HOME</Link>
+                        <Link key="HOME" className='link' to="/">HOME</Link>
+                    </li>
+                    {
+                        topics.map((topic) => (
+                            <li className="topListItem">
+                                <Link key={topic.id} className='link' to="/">{topic.name}</Link>
+                            </li>
+                        ))
+                    }
+                    <li className="topListItem">
+                        <Link className='link' to="/">ABOUT ME</Link>
                     </li>
                     <li className="topListItem">
-                        <Link className='link' to="/">ABOUT</Link>
-                    </li>
-                    <li className="topListItem">
-                        <Link className='link' to="/">CONTACT</Link>
-                    </li>
-                    <li className="topListItem">
-                        <Link className='link' to="/write">WRITE</Link>
+                        <Link className='link' to="/write">
+                            {user && "WRITE"}
+                        </Link>
                     </li>
                     <li className="topListItem">
                         <Link className='link' to="/logout">
