@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useEffect } from 'react';
 
 export default function TopBar() {
-    const user = true;
+    const user = false;
     const [topics, setTopics] = useState([]);
 
     useEffect(() => {

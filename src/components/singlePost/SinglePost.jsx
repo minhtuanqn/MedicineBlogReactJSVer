@@ -6,7 +6,7 @@ import "./singlePost.css";
 export default function SinglePost() {
   const location = useLocation();
   const path = location.pathname.split("/")[2];
-  const [post, setPost] = useState({})
+  const [post, setPost] = useState({});
 
   useEffect(() => {
     const getPost = async () => {
@@ -19,11 +19,8 @@ export default function SinglePost() {
   return (
     <div className="singlePost">
       <div className="singlePostWrapper">
-        <img
-          src="https://images.pexels.com/photos/6685428/pexels-photo-6685428.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-          alt=""
-          className="singlePostImg"
-        />
+        {post.coverPhoto && (<img src={post.coverPhoto} alt="" className="singlePostImg" />)}
+
         <h1 className="singlePostTitle">
           {post.title}
           <div className="singlePostEdit">
@@ -35,13 +32,12 @@ export default function SinglePost() {
           <span className="singlePostAuthor">
             Author: <b>Minh Tuan</b>
           </span>
-          <span className="singlePostDate">
-            {post.createDate}
-          </span>
+          <span className="singlePostDate">{post.createDate}</span>
         </div>
-        <p className="singlePostDes">
-          {post.content}
-        </p>
+        <div
+          className="singlePostDes"
+          dangerouslySetInnerHTML={{ __html: post.content }}
+        />
       </div>
     </div>
   );
