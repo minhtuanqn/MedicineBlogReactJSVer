@@ -1,3 +1,31 @@
-.single {
-    display: flex;
+@media (min-width: 660px) {
+
+    .single {
+        display: flex;
+    }
+
+    .singlePostContainer {
+        flex: 9;
+    }
+
+    .sidebarContainer {
+        flex: 3;
+    }
 }
+
+@media (max-width: 660px) {
+
+    .single {
+        display: block;
+        width: 100%;
+    }
+
+    .singlePostContainer {
+        width: 100%;
+    }
+
+    .sidebarContainer {
+        width: 100%;
+    }
+}
+

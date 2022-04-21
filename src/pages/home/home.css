@@ -1,4 +1,32 @@
-.home {
-    display: flex;
-    
+@media (min-width: 660px) {
+
+    .home {
+        display: flex;
+    }
+
+    .postsContainer {
+        flex: 9;
+    }
+
+    .sidebarContainer {
+        flex: 3;
+    }
 }
+
+@media (max-width: 680px) {
+
+    .home {
+        display: block;
+    }
+
+    .postsContainer {
+        width: 100%;
+    }
+
+    .sidebarContainer {
+        width: 100%;
+    }
+}
+
+
+

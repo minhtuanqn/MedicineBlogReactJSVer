@@ -15,12 +15,18 @@ export default function Home() {
         }
         fetchPosts()
     }, [])
+
+    
     return (
         <>
             <Header/>
             <div className="home">
-                <Posts posts = {posts}/>
-                <SideBar/>
+                <div className="postsContainer">
+                    <Posts posts = {posts}/>
+                </div>
+                <div className="sidebarContainer">
+                    <SideBar/>
+                </div>
             </div>
         </> 
     );

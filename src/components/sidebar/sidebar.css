@@ -1,5 +1,4 @@
 .sidebar {
-    flex: 3;
     margin: 20px;
     padding-bottom: 20px;
     background-color: #fdfbfb;
@@ -8,6 +7,21 @@
     flex-direction: column;
     align-items: center;
 }
+
+@media (max-width: 800px) {
+    .sidebar {
+        flex: 12;
+        margin: 20px;
+        padding-bottom: 20px;
+        background-color: #fdfbfb;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
 
 .sidebarItem {
     display: flex;
@@ -49,9 +63,32 @@
     cursor: pointer;
 }
 
+.sidebarTagsItemSm {
+    font-size: 20px;
+    cursor: pointer;
+    display: inline-block;
+    color: green;
+    margin-right: 4px;
+}
+
+.sidebarTagsItemMd {
+    font-size: 15px;
+    cursor: pointer;
+    display: inline-block;
+    color: green;
+    margin-right: 4px;
+}
+
+.sidebarTagsItemLg {
+    font-size: 12px;
+    cursor: pointer;
+    display: inline-block;
+    color: green;
+    margin-right: 4px;
+}
+
 .sidebarListItem:hover {
     color: red;
-    font-size: 20px;
 }
 
 .sidebarSocial {
@@ -66,4 +103,14 @@
     font-size: 16px;
     margin-left: 10px;
     cursor: pointer;
+}
+
+.sidebarList {
+    width: 80%;
+}
+
+.sidebarListRefItem {
+    cursor: pointer;
+    color: green;
+    margin-top: 20px;
 }

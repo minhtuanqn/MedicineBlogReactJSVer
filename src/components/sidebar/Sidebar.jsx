@@ -5,13 +5,31 @@ import './sidebar.css';
 export default function SideBar() {
 
     const [tags, setTags] = useState([]);
+    const [topics, setTopics] = useState([]);
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+        const getTopics = async () => {
+            const res = await axios.get("https://localhost:44303/api/topics/");
+            setTopics(res?.data?.data);
+        }
+        getTopics();
+    }, []);
 
     useEffect(() => {
         const getTags = async () => {
-            const res = axios.get("https://localhost:44303/api/tags/");
-            setTags((await res).data.data);
+            const res = await axios.get("https://localhost:44303/api/tags");
+            setTags(res?.data?.data);
         }
         getTags();
+    }, []);
+
+    useEffect(() => {
+        const getPosts = async () => {
+            const res = await axios.get("https://localhost:44303/api/posts");
+            setPosts(res?.data?.data);
+        }
+        getPosts();
     }, []);
 
     return (
@@ -33,10 +51,35 @@ export default function SideBar() {
             <div className="sidebarItem">
                 <span className="sidebarTitle">CHỦ ĐỀ BẠN QUAN TÂM</span>
                 <ul className="sidebarList">
-                    {tags.map((t) => (
+                    {topics.map((t) => (
                         <li key={t.name} className="sidebarListItem">{t.name}</li>
                     ))}
                 </ul>
+            </div>
+            <div className="sidebarItem">
+                <span className="sidebarTitle">TAGS</span>
+                <ul className="sidebarList">
+                    {tags.map((t) => {
+                        if(t.name.length > 10 && t.name.length < 20)
+                            return <li key={t.name} className="sidebarTagsItemMd">{t.name}</li>
+                        if(t.name.length < 10)
+                            return <li key={t.name} className="sidebarTagsItemSm">{t.name}</li>
+                        else 
+                            return <li key={t.name} className="sidebarTagsItemLg">{t.name}</li>
+                    })}
+                </ul>
+            </div>
+            <div className="sidebarItem">
+                <span className="sidebarTitle">BÀI VIẾT GẦN NHẤT</span>
+                <div className="sidebarRefPost">
+                    <ul className="sidebarList">
+                    {posts.map((t) => (
+                        <li key={t.title} className="sidebarListRefItem">
+                            <a>{t.title}</a>
+                        </li>
+                    ))}
+                </ul>
+                </div>
             </div>
             <div className="sidebarItem">
                 <span className="sidebarTitle">THEO DÕI CHÚNG TÔI</span>

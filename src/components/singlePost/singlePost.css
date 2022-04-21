@@ -50,6 +50,7 @@
 }
 
 .singlePostDes {
+    line-break: loose;
     color:  #666;
     font-size: 18px;
     line-height: 25px;
@@ -61,4 +62,12 @@
     margin-left: 20px;
     font-size: 30px;
     font-weight: 600;
+}
+
+img {
+    display: block;
+    margin: auto;
+    max-width: 90%;
+    height: auto;
+    object-fit: cover;
 }

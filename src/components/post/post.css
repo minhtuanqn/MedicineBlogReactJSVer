@@ -1,7 +1,22 @@
-.post {
-    width: 385px;
-    margin: 0px 25px 40px 25px;
+@media (min-width: 660px) {
+    .post {
+        width: 40%;
+        margin-left: 3%;
+        margin-right: 3%;
+    }
 }
+
+@media (max-width: 660px) {
+    .post {
+        width: 90%;
+        margin-left: 3%;
+        margin-right: 3%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}
+
+
 
 .postImg {
     width: 100%;
