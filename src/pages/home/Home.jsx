@@ -19,7 +19,9 @@ export default function Home() {
     
     return (
         <>
-            <Header/>
+            <div className="headerContainer">
+                <Header/>
+            </div>
             <div className="home">
                 <div className="postsContainer">
                     <Posts posts = {posts}/>

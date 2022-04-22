@@ -10,7 +10,7 @@ export default function Post({ post }) {
 
       <div className="postInfor">
         <Link className="link" to={`/post/${post.id}`}>
-          <span className="postTitle">{post.title}</span>
+          <span className="postTitle">{post.title.toUpperCase()}</span>
         </Link>
         <hr />
         <span className="postDate">{post.createDate}</span>

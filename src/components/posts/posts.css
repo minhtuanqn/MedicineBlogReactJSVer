@@ -1,13 +1,18 @@
 .posts {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 40px;
-    padding-left: 5%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 40px;
 }
 
+@media (min-width: 1200px) {
+  .postsDiv {
+    width: 80%;
+    transform: translate(9%, 0);
+  }
+}
 
-
-
-
-
-
+@media (max-width: 820px) {
+  .posts {
+    justify-content: center;
+  }
+}
