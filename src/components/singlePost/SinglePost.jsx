@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import Comment from "../comment/Comment";
 import "./singlePost.css";
 
 export default function SinglePost() {
@@ -19,7 +20,9 @@ export default function SinglePost() {
   return (
     <div className="singlePost">
       <div className="singlePostWrapper">
-        {post.coverPhoto && (<img src={post.coverPhoto} alt="" className="singlePostImg" />)}
+        {post.coverPhoto && (
+          <img src={post.coverPhoto} alt="" className="singlePostImg" />
+        )}
 
         <h1 className="singlePostTitle">
           {post.title}
@@ -38,6 +41,18 @@ export default function SinglePost() {
           className="singlePostDes"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
+      </div>
+      <hr />
+      <div className="commentContainer">
+        <div className="titleComment">
+          <h4>
+            10 THOUGHTS ON “LẬP TRÌNH WEB LIỆU CÓ “CHẾT” HAY HẾT THỜI KHÔNG?”
+          </h4>
+        </div>
+        <div className="comments">
+          <Comment />
+          <Comment />
+        </div>
       </div>
     </div>
   );

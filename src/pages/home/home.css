@@ -1,4 +1,4 @@
-@media (min-width: 700px) {
+@media (min-width: 820px) {
 
     .headerContainer {
         display: block;
@@ -11,18 +11,36 @@
     }
 
     .postsContainer {
-        flex: 9;
+        flex: 7.5;
     }
 
     .sidebarContainer {
         flex: 3;
     }
+
+    .leftSpace {
+        flex: 0.5;
+    }
+
+    .rightSpace {
+        flex: 0.5;
+    }
+
+    .betweenSpace {
+        flex: 0.5;
+    }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 820px) {
+
+    .headerContainer {
+        display: block;
+        width: 100%;
+    }
 
     .home {
         display: block;
+        width: 100%;
     }
 
     .postsContainer {
@@ -31,6 +49,18 @@
 
     .sidebarContainer {
         width: 100%;
+    }
+
+    .leftSpace {
+        letter-spacing: 0%;
+    }
+
+    .rightSpace {
+        width: 0%;
+    }
+
+    .betweenSpace {
+        width: 0%;
     }
 }
 

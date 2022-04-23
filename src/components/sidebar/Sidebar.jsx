@@ -35,6 +35,11 @@ export default function SideBar() {
     <div className="sidebarDiv">
       <div className="sidebar">
         <div className="sidebarItem">
+          <form  className="searchSidebar">
+            <input type="text" placeholder="Search..."/>
+          </form>
+        </div>
+        <div className="sidebarItem">
           <span className="sidebarTitle">ABOUT ME</span>
           <img
             src="https://i.pinimg.com/236x/1e/3f/58/1e3f587572a7a7b20bbf1828595a1786--holiday-gift-guide.jpg"

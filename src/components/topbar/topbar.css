@@ -1,68 +1,129 @@
 @media (max-width: 820px) {
-    .top {
-        display: none;
-    }
+  .top {
+    display: none;
+  }
+
+  .topSm {
+    justify-content: right;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    background-color: antiquewhite;
+  }
 }
 
 @media (min-width: 820px) {
-    .top {
-        width: 100%;
-        height: 50px;
-        background-color:white;
-        position: sticky;
-        top: 0;
-        display: flex;
-        align-items: center;
-        font-family: 'Josefin Sans', sans-serif;
-        z-index: 999;
-    }
-}
-
-
-
-.topLeft,.topRight {
-    flex: 2;
+  .top {
+    width: 100%;
+    height: 50px;
+    background-color: white;
+    position: sticky;
+    top: 0;
     display: flex;
     align-items: center;
-    justify-content: center;
+    font-family: "Josefin Sans", sans-serif;
+    z-index: 999;
+  }
+
+  .topSm {
+    display: none;
+  }
+
+  .searchContainerSm {
+    display: none;
+  }
+
+  .navTopic {
+    display: none;
+  }
+}
+
+.topLeft,
+.topRight {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .topIcon {
-    font-size: 20px;
-    margin-right: 10px;
-    color: #444;
-    cursor: pointer;
+  font-size: 20px;
+  margin-right: 10px;
+  color: #444;
+  cursor: pointer;
 }
 
 .topImg {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .topCenter {
-    flex: 8;
+  flex: 8;
 }
 
 .topList {
-    display: flex;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .topListItem {
-    margin-right: 15px;
-    font-size: 18px;
-    font-weight: 300;
-    cursor: pointer;
+  margin-right: 15px;
+  font-size: 18px;
+  font-weight: 300;
+  cursor: pointer;
 }
 
 .topSearchIcon {
-    font-size: 18px;
-    color: #666;
-    cursor: pointer;
-    margin-left: 15px;
+  font-size: 18px;
+  color: #666;
+  cursor: pointer;
+  margin-left: 15px;
+}
+
+.topSmIcon {
+  margin-right: 15px;
+  font-size: 23px;
+}
+
+.searchContainerSm {
+  width: 100%;
+  height: 50px;
+  background-color: #3cb371;
+}
+
+.searchFormSm {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchFormSm > input {
+  width: 80%;
+  height: 20px;
+}
+
+.navTopic > ul {
+  padding-left: 0;
+  text-align: center;
+}
+
+.navTopic > ul > li {
+  font-family: "Josefin Sans", sans-serif;
+  color: black;
+  font-weight: 400;
+  width: 100%;
+  margin: 0 auto;
+  text-decoration: none;
+  list-style: none;
+  background-color: antiquewhite;
+  border: black 1ch;
+  padding: 5px;
+  border-top: 1px solid #666;
 }

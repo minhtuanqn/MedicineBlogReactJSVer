@@ -1,22 +1,47 @@
-@media (min-width: 700px) {
+@media (min-width: 820px) {
 
     .single {
         display: flex;
+        margin-top: 40px;
     }
 
     .singlePostContainer {
-        flex: 9;
+        flex: 7.5;
     }
 
     .sidebarContainer {
         flex: 3;
     }
+
+    .leftSpace {
+        flex: 0.5;
+    }
+
+    .rightSpace {
+        flex: 0.5;
+    }
+
+    .betweenSpace {
+        flex: 0.5;
+    }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 820px) {
 
     .single {
         display: block;
+    }
+
+    .rightSpace {
+        width: 0%;
+    }
+
+    .leftSpace {
+        width: 0%;
+    }
+
+    .betweenSpace {
+        width: 0%;;
     }
 
     .singlePostContainer {

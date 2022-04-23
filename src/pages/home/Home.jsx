@@ -23,11 +23,20 @@ export default function Home() {
                 <Header/>
             </div>
             <div className="home">
+                <div className="leftSpace">
+
+                </div>
                 <div className="postsContainer">
                     <Posts posts = {posts}/>
                 </div>
+                <div className="betweenSpace">
+
+                </div>
                 <div className="sidebarContainer">
                     <SideBar/>
+                </div>
+                <div className="leftSpace">
+
                 </div>
             </div>
         </> 

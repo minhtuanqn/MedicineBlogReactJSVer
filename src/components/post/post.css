@@ -1,8 +1,9 @@
 @media (min-width: 820px) {
     .post {
         width: 45%;
-        margin-left: 2%;
-        margin-right: 2%;
+        margin-left: 2.5%;
+        margin-right: 2.5%;
+        /* border: solid; */
     }
 }
 
