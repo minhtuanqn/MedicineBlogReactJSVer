@@ -2,6 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Comment from "../comment/Comment";
+import CommentForm from "../commentForm/CommentForm";
+import Comments from "../comments/Comments";
 import "./singlePost.css";
 
 export default function SinglePost() {
@@ -50,8 +52,7 @@ export default function SinglePost() {
           </h4>
         </div>
         <div className="comments">
-          <Comment />
-          <Comment />
+          <Comments/>
         </div>
       </div>
     </div>

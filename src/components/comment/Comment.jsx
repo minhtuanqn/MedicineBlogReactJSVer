@@ -1,3 +1,5 @@
+import { useState } from "react";
+import CommentForm from "../commentForm/CommentForm";
 import "./comment.css";
 
 export default function Comment() {
@@ -9,7 +11,7 @@ export default function Comment() {
           src="https://images.pexels.com/photos/1167355/pexels-photo-1167355.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
         />
         <div className="detailsInfor">
-          <h4>Ho Va Tenahfjhjkhfkjahfjhkjhjhjhkjhkjhkhjkhkjh</h4>
+          <h4>Le Minh Tuan</h4>
           <p>25/08/2020 AT 12:42 PM</p>
         </div>
       </div>
