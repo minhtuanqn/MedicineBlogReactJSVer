@@ -2,3 +2,20 @@
     margin-left: 50px;
     margin-top: 40px;
 }
+
+.replyCmt {
+    margin-left: 70px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.replyCmt > label {
+    margin-left: 10px;
+    color: green;
+    cursor: pointer;
+}
+
+.replyCmt > i {
+    color: green;
+    cursor: pointer;
+}

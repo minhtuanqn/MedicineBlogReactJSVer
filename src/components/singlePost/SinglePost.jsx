@@ -10,14 +10,29 @@ export default function SinglePost() {
   const location = useLocation();
   const path = location.pathname.split("/")[2];
   const [post, setPost] = useState({});
+  const [comments, setComments] = useState([]);
+
+  function proccessCmt(initCmts) {
+    var combinedCmts = [];
+    Object.entries(initCmts).map(initCmt => {
+      initCmt[1].map(cmt => {
+        var cmtDict = [initCmt[0], cmt];
+        combinedCmts.push(cmtDict);
+      })
+    })
+    return combinedCmts;
+  }
 
   useEffect(() => {
     const getPost = async () => {
-      const res = axios.get("https://localhost:44303/api/posts/" + path);
-      setPost((await res).data.data);
+      const res = await axios.get("https://localhost:44303/api/posts/" + path);
+      setPost(res.data.data);
+      var combinedCmts = proccessCmt(res.data.data.comments);
+      setComments(combinedCmts);
     };
     getPost();
   }, [path]);
+
 
   return (
     <div className="singlePost">
@@ -35,7 +50,7 @@ export default function SinglePost() {
         </h1>
         <div className="singlePostInfor">
           <span className="singlePostAuthor">
-            Author: <b>Minh Tuan</b>
+            Author: <b>{post.authorName}</b>
           </span>
           <span className="singlePostDate">{post.createDate}</span>
         </div>
@@ -52,7 +67,7 @@ export default function SinglePost() {
           </h4>
         </div>
         <div className="comments">
-          <Comments/>
+          <Comments commentsDic = {comments}/>
         </div>
       </div>
     </div>

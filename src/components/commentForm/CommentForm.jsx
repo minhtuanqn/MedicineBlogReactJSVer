@@ -3,8 +3,14 @@ import "./commentForm.css";
 export default function CommentForm() {
   return (
     <div className="commentForm">
-      <h3>LEAVE REPLY</h3>
-      <br />
+      <div className="cmtHeader">
+        <div className="replyTitle">
+          <h3>LEAVE REPLY</h3>
+        </div>
+        <div className="closeIcon">
+          <i className="fa-solid fa-xmark"></i>
+        </div>
+      </div>
       <p>
         Your email address will not be published. Required fields are marked
       </p>

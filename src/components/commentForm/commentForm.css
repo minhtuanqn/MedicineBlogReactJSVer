@@ -50,3 +50,18 @@
     font-family: inherit;
     color: grey;
 }
+
+.cmtHeader {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.replyTitle {
+    flex: 11.5;
+}
+
+.closeIcon {
+    flex: 0.5;
+    justify-content: right;
+    cursor: pointer;
+}
