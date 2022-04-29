@@ -46,7 +46,7 @@ export default function SideBar() {
             alt=""
           />
           <p className="desDetails">
-            Mình là Phạm Thị Thu Thảo, một dược sĩ.
+            Mình là Lê Minh Tuấn, một dược sĩ.
             <br />
             <br />
             Thuở còn là sinh viên, mình từng có những thắc mắc, về con đường

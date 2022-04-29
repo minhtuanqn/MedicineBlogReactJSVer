@@ -54,6 +54,7 @@
 .cmtHeader {
     display: flex;
     margin-bottom: 20px;
+    max-width: 500px;
 }
 
 .replyTitle {
@@ -62,6 +63,6 @@
 
 .closeIcon {
     flex: 0.5;
-    justify-content: right;
+    text-align: right;
     cursor: pointer;
 }

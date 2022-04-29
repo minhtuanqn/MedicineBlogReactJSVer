@@ -11,14 +11,20 @@ import {
   Route,
   Link
 } from 'react-router-dom'
+import { useState } from "react";
 
 function App() {
   const user = false;
+
   return (
+
     <Router>
-        <TopBar/>
+        <TopBar />
         <Routes>
           <Route path="/" element={<Home/>}/>
+          <Route path="/bai-viet-hay" element={<Home />}/>
+          <Route path="/suc-khoe" element={<Home/>}/>
+          <Route path="/thong-tin-thuoc" element={<Home/>}/>
           <Route path="/register" element={user ? <Home/> : <Register/>}/>
           <Route path="/login" element={user ? <Home/> : <Login/>}/>
           <Route path="/write" element={user ? <Write/> : <Login/>}/>

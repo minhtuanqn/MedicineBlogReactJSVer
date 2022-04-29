@@ -51,7 +51,7 @@ export default function TopBar() {
             </li>
             {topics.map((topic) => (
               <li className="topListItem">
-                <Link key={topic.id} className="link" to="/">
+                <Link key={topic.id}  className="link" to={topic.description}>
                   {topic.name}
                 </Link>
               </li>
@@ -66,14 +66,14 @@ export default function TopBar() {
                 {user && "WRITE"}
               </Link>
             </li>
-            <li className="topListItem">
+            {/* <li className="topListItem">
               <Link className="link" to="/logout">
                 {user && "LOGOUT"}
               </Link>
-            </li>
+            </li> */}
           </ul>
         </div>
-        <div className="topRight">
+        {/* <div className="topRight">
           {user ? (
             <img
               className="topImg"
@@ -96,7 +96,7 @@ export default function TopBar() {
           )}
 
           <i className="topSearchIcon fa-solid fa-magnifying-glass"></i>
-        </div>
+        </div> */}
       </div>
       <div className="topSm">
         <i
@@ -124,7 +124,7 @@ export default function TopBar() {
             </li>
             {topics.map((topic) => (
               <li className="topListItemSm">
-                <Link key={topic.id} className="link" to="/">
+                <Link key={topic.id} className="link" to={topic.description}>
                   {topic.name}
                 </Link>
               </li>
