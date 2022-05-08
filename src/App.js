@@ -52,15 +52,16 @@ function App() {
     <Router>
       <TopBar />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/bai-viet-hay" element={<Home />} />
-        <Route path="/suc-khoe" element={<Home />} />
-        <Route path="/thong-tin-thuoc" element={<Home />} />
-        <Route path="/register" element={user ? <Home /> : <Register />} />
-        <Route path="/login" element={user ? <Home /> : <Login />} />
+        <Route path="/" element={<Home type="topic"/>} />
+        <Route path="/bai-viet-hay" element={<Home type="topic"/>} />
+        <Route path="/suc-khoe" element={<Home type="topic"/>} />
+        <Route path="/thong-tin-thuoc" element={<Home type="topic"/>} />
+        <Route path="/register" element={user ? <Home type="topic"/> : <Register />} />
+        <Route path="/login" element={user ? <Home type="topic"/> : <Login />} />
         <Route path="/write" element={user ? <Write /> : <Login />} />
         <Route path="/settings" element={user ? <Settings /> : <Register />} />
         <Route path="/post/:postId" element={<Single />} />
+        <Route path="/tag/:tagId" element={<Home type="tag"/>}/>
       </Routes>
     </Router>
   );

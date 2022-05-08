@@ -6,23 +6,30 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 
-export default function Home() {
+export default function Home({type}) {
   const [posts, setPosts] = useState([]);
 
-  const path = useLocation().pathname.split("/")[1];
+  const path = useLocation().pathname.split("/");
+  var uri = path.length > 2 ? path[2] : path[1];
 
   useEffect(() => {
     const fetchPosts = async () => {
-      var topicName  = path ? path : "";
+      var searchName  = uri ? uri : "";
      
       var baseUrl = "https://localhost:44303/api/";
-      var url = topicName ? baseUrl + "topics/" + topicName +  "/posts" : baseUrl + "posts";
-       console.log(url)
-      const res = axios.get(url);
-      setPosts((await res).data.data);
+      var url = baseUrl;
+      if(type === 'topic') {
+        url = searchName ? baseUrl + "topics/" + searchName +  "/posts" : baseUrl + "posts";
+      } else if (type === 'tag') {
+        url = searchName ? baseUrl + "tags/" + searchName +  "/posts" : baseUrl + "posts";
+      }
+      const res = await axios.get(url).catch(err => {
+        console.log(err);
+      });
+      setPosts(res?.data?.data);
     };
     fetchPosts();
-  }, [path]);
+  }, [uri]);
 
   return (
     <>

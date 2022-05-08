@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./topbar.css";
-import axios from "axios";
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function TopBar() {
@@ -27,13 +25,6 @@ export default function TopBar() {
     } else {
       setNavSm(true);
     }
-  }
-
-  const handleChooseTopic = (topicId) => {
-    dispatch({
-      type: 'SELECTED_TOPIC_ID',
-      payload: topicId
-    });
   }
 
   return (

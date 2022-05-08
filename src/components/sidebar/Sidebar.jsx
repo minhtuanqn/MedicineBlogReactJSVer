@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import "./sidebar.css";
 
 export default function SideBar() {
@@ -52,32 +53,40 @@ export default function SideBar() {
           <span className="sidebarTitle">CHỦ ĐỀ BẠN QUAN TÂM</span>
           <ul className="sidebarList">
             {topics.map((t) => (
-              <li key={t.name} className="sidebarListItem">
-                {t.name}
+              <li key={t.name} >
+                <Link className="sidebarListItem" to={`/${t.description}`}>
+                  {t.name}
+                </Link>
               </li>
             ))}
           </ul>
         </div>
         <div className="sidebarItem">
           <span className="sidebarTitle">TAGS</span>
-          <ul className="sidebarList">
+          <ul className="sidebarListLeft">
             {tags.map((t) => {
               if (t.name.length > 10 && t.name.length < 20)
                 return (
                   <li key={t.name} className="sidebarTagsItemMd">
-                    {t.name}
+                    <Link className="tagLink" to={`/tag/${t.description}`}>
+                      {t.name}
+                    </Link>
                   </li>
                 );
               if (t.name.length < 10)
                 return (
                   <li key={t.name} className="sidebarTagsItemSm">
-                    {t.name}
+                    <Link className="tagLink" to={`/tag/${t.description}`}>
+                      {t.name}
+                    </Link>
                   </li>
                 );
               else
                 return (
                   <li key={t.name} className="sidebarTagsItemLg">
-                    {t.name}
+                    <Link className="tagLink" to={`/tag/${t.description}`}>
+                      {t.name}
+                    </Link>
                   </li>
                 );
             })}
@@ -86,10 +95,10 @@ export default function SideBar() {
         <div className="sidebarItem">
           <span className="sidebarTitle">BÀI VIẾT GẦN NHẤT</span>
           <div className="sidebarRefPost">
-            <ul className="sidebarList">
+            <ul className="sidebarListLeft">
               {recentPosts.map((t) => (
-                <li key={t.title} className="sidebarListRefItem">
-                  <a>{t.title}</a>
+                <li key={t.title}>
+                  <Link className="sidebarListRefItem" to={`/post/${t.id}`}>{t.title}</Link>
                 </li>
               ))}
             </ul>
