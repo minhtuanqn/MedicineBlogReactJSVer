@@ -3,20 +3,15 @@ import { Link } from "react-router-dom";
 import "./topbar.css";
 import axios from "axios";
 import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function TopBar() {
   const user = false;
-  const [topics, setTopics] = useState([]);
+  const topics = useSelector(state => state.allTopics.topics); 
+  const dispatch = useDispatch();
   const [searchSm, setSearchSm] = useState(false);
   const [navSm, setNavSm] = useState(false);
 
-  useEffect(() => {
-    const fetchTopicss = async () => {
-      const res = axios.get("https://localhost:44303/api/topics/");
-      setTopics((await res).data.data);
-    };
-    fetchTopicss();
-  }, []);
 
   function changeStateSearch() {
     if (searchSm) {
@@ -34,6 +29,13 @@ export default function TopBar() {
     }
   }
 
+  const handleChooseTopic = (topicId) => {
+    dispatch({
+      type: 'SELECTED_TOPIC_ID',
+      payload: topicId
+    });
+  }
+
   return (
     <>
       <div className="top">
@@ -44,7 +46,7 @@ export default function TopBar() {
         </div>
         <div className="topCenter">
           <ul className="topList">
-            <li className="topListItem">
+            <li className="topListItem" >
               <Link key="HOME" className="link" to="/">
                 HOME
               </Link>
@@ -66,37 +68,8 @@ export default function TopBar() {
                 {user && "WRITE"}
               </Link>
             </li>
-            {/* <li className="topListItem">
-              <Link className="link" to="/logout">
-                {user && "LOGOUT"}
-              </Link>
-            </li> */}
           </ul>
         </div>
-        {/* <div className="topRight">
-          {user ? (
-            <img
-              className="topImg"
-              src="https://images.pexels.com/photos/1858175/pexels-photo-1858175.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-              alt=""
-            />
-          ) : (
-            <ul className="topList">
-              <li className="topListItem">
-                <Link className="link" to="/login">
-                  LOGIN
-                </Link>
-              </li>
-              <li className="topListItem">
-                <Link className="link" to="/register">
-                  REGISTER
-                </Link>
-              </li>
-            </ul>
-          )}
-
-          <i className="topSearchIcon fa-solid fa-magnifying-glass"></i>
-        </div> */}
       </div>
       <div className="topSm">
         <i

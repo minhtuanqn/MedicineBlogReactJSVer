@@ -1,32 +1,17 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import "./sidebar.css";
 
 export default function SideBar() {
-  const [tags, setTags] = useState([]);
-  const [topics, setTopics] = useState([]);
-  const [posts, setPosts] = useState([]);
-
-  useEffect(() => {
-    const getTopics = async () => {
-      const res = await axios.get("https://localhost:44303/api/topics/");
-      setTopics(res?.data?.data);
-    };
-    getTopics();
-  }, []);
-
-  useEffect(() => {
-    const getTags = async () => {
-      const res = await axios.get("https://localhost:44303/api/tags");
-      setTags(res?.data?.data);
-    };
-    getTags();
-  }, []);
+  const tags = useSelector(state => state.allTags.tags);
+  const topics = useSelector(state => state.allTopics.topics);
+  const [recentPosts, setRecentPosts] = useState([]);
 
   useEffect(() => {
     const getPosts = async () => {
       const res = await axios.get("https://localhost:44303/api/posts");
-      setPosts(res?.data?.data);
+      setRecentPosts(res?.data?.data);
     };
     getPosts();
   }, []);
@@ -102,7 +87,7 @@ export default function SideBar() {
           <span className="sidebarTitle">BÀI VIẾT GẦN NHẤT</span>
           <div className="sidebarRefPost">
             <ul className="sidebarList">
-              {posts.map((t) => (
+              {recentPosts.map((t) => (
                 <li key={t.title} className="sidebarListRefItem">
                   <a>{t.title}</a>
                 </li>

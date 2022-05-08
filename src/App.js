@@ -5,32 +5,63 @@ import Settings from "./pages/settings/Settings";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import Single from "./pages/single/Single";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Link
-} from 'react-router-dom'
-import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import {setTopics} from './actions/topicsAction';
+import { setTags } from "./actions/tagsAction";
 
 function App() {
   const user = false;
 
-  return (
+    const topics = useSelector((state) => state);
+    const tags = useSelector((state) => state);
+    const dispatch = useDispatch();
 
+    useEffect(() => {
+      const fetchTopics = async () => {
+        const res = await axios
+          .get("https://localhost:44303/api/topics")
+          .catch((err) => {
+            console.log("Err", err);
+          });
+          console.log(res.data.data)
+        dispatch(setTopics(res.data.data));
+      };
+
+      fetchTopics();
+    }, []);
+
+    useEffect(() => {
+      const fetchTags = async () => {
+        const res = await axios
+          .get("https://localhost:44303/api/tags")
+          .catch((err) => {
+            console.log("Err", err);
+          });
+          console.log(res.data.data)
+        dispatch(setTags(res.data.data));
+      };
+
+      fetchTags();
+    }, []);
+
+
+  return (
     <Router>
-        <TopBar />
-        <Routes>
-          <Route path="/" element={<Home/>}/>
-          <Route path="/bai-viet-hay" element={<Home />}/>
-          <Route path="/suc-khoe" element={<Home/>}/>
-          <Route path="/thong-tin-thuoc" element={<Home/>}/>
-          <Route path="/register" element={user ? <Home/> : <Register/>}/>
-          <Route path="/login" element={user ? <Home/> : <Login/>}/>
-          <Route path="/write" element={user ? <Write/> : <Login/>}/>
-          <Route path="/settings" element={user ? <Settings/> : <Register/>}/>
-          <Route path="/post/:postId" element={<Single/>}/>
-        </Routes>
+      <TopBar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/bai-viet-hay" element={<Home />} />
+        <Route path="/suc-khoe" element={<Home />} />
+        <Route path="/thong-tin-thuoc" element={<Home />} />
+        <Route path="/register" element={user ? <Home /> : <Register />} />
+        <Route path="/login" element={user ? <Home /> : <Login />} />
+        <Route path="/write" element={user ? <Write /> : <Login />} />
+        <Route path="/settings" element={user ? <Settings /> : <Register />} />
+        <Route path="/post/:postId" element={<Single />} />
+      </Routes>
     </Router>
   );
 }

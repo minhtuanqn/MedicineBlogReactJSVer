@@ -7,52 +7,39 @@ import axios from "axios";
 import { useLocation } from "react-router-dom";
 
 export default function Home() {
-    const [posts, setPosts] = useState([]);
-    const [topics, setTopics] = useState([]);
+  const [posts, setPosts] = useState([]);
 
-    const path = useLocation().pathname.split("/");
+  const path = useLocation().pathname.split("/")[1];
 
-    // useEffect(() => {
-    //     const fetchTopics = async () => {
-    //         var baseUrl = "https://localhost:44303/api/topics/";
-    //         const res = axios.get(baseUrl);
-    //         setTopics((await res).data.data)
-    //     }
-    //     fetchTopics()
-    // }, [])
+  useEffect(() => {
+    const fetchPosts = async () => {
+      var topicName  = path ? path : "";
+     
+      var baseUrl = "https://localhost:44303/api/";
+      var url = topicName ? baseUrl + "topics/" + topicName +  "/posts" : baseUrl + "posts";
+       console.log(url)
+      const res = axios.get(url);
+      setPosts((await res).data.data);
+    };
+    fetchPosts();
+  }, [path]);
 
-    useEffect(() => {
-        const fetchPosts = async () => {
-            var baseUrl = "https://localhost:44303/api/posts";
-            const res = axios.get(baseUrl);
-            setPosts((await res).data.data)
-        }
-        fetchPosts()
-    }, [path]);
-
-    
-    return (
-        <>
-            <div className="headerContainer">
-                <Header/>
-            </div>
-            <div className="home">
-                <div className="leftSpace">
-
-                </div>
-                <div className="postsContainer">
-                    <Posts posts = {posts}/>
-                </div>
-                <div className="betweenSpace">
-
-                </div>
-                <div className="sidebarContainer">
-                    <SideBar/>
-                </div>
-                <div className="leftSpace">
-
-                </div>
-            </div>
-        </> 
-    );
+  return (
+    <>
+      <div className="headerContainer">
+        <Header />
+      </div>
+      <div className="home">
+        <div className="leftSpace"></div>
+        <div className="postsContainer">
+          <Posts posts={posts} />
+        </div>
+        <div className="betweenSpace"></div>
+        <div className="sidebarContainer">
+          <SideBar />
+        </div>
+        <div className="leftSpace"></div>
+      </div>
+    </>
+  );
 }
